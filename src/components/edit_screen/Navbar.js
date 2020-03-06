@@ -1,4 +1,5 @@
 import React from 'react'
+//import { Modal } from 'materialize-css';
 
 class Navbar extends React.Component {
   constructor() {
@@ -8,11 +9,11 @@ class Navbar extends React.Component {
   }
 
   componentDidMount = () => {
-      console.log("\tNavbar component did mount");
+    console.log("\tNavbar component did mount");
   }
 
   componentWillUnmount = () => {
-      console.log("\tNavbar component will unmount");
+    console.log("\tNavbar component will unmount");
   }
 
   handleGoHome = () => {
@@ -21,12 +22,14 @@ class Navbar extends React.Component {
   }
 
   render() {
+    //const {key} = this.props.logo;
+    // FOR DELETE: onClick={this.props.deleteLogoCallback.bind(this, key)}
     return (
       <nav>
         <div className="nav-wrapper">
-          <div  className='brand-logo' 
-                style={ {cursor: "pointer"} }
-                onClick={this.handleGoHome}>
+          <div className='brand-logo'
+            style={{ cursor: "pointer" }}
+            onClick={this.handleGoHome}>
             goLogoLo
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
