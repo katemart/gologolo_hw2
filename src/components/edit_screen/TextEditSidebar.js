@@ -14,6 +14,8 @@ class TextEditSidebar extends Component {
             //borderStyle: "solid",
             borderRadius: 5,
             borderThickness: 2,
+            padding: 5,
+            margin: 10
         }
     }
 
@@ -51,12 +53,22 @@ class TextEditSidebar extends Component {
         this.setState({ borderThickness: event.target.value}, this.completeUserEditing);
     }
 
+    handlePaddingChange = (event) => {
+        console.log("handlePaddingChange to " + event.target.value);
+        this.setState({ padding: event.target.value}, this.completeUserEditing);
+    }
+
+    handleMarginChange = (event) => {
+        console.log("handleMarginChange to " + event.target.value);
+        this.setState({ margin: event.target.value}, this.completeUserEditing);
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text,
             this.state.textColor, this.state.fontSize, this.state.backgroundColor, this.state.borderColor,
-            this.state.borderRadius, this.state.borderThickness);
+            this.state.borderRadius, this.state.borderThickness, this.state.padding, this.state.margin);
     }
 
     render() {
@@ -128,6 +140,24 @@ class TextEditSidebar extends Component {
                                 <input type="range" min="0" max="100"
                                     onChange={this.handleBorderThicknessChange}
                                     value={this.props.logo.borderThickness}
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Padding:</div>
+                            <div className="col s8">
+                                <input type="range" min="0" max="100"
+                                    onChange={this.handlePaddingChange}
+                                    value={this.props.logo.padding}
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Margin:</div>
+                            <div className="col s8">
+                                <input type="range" min="0" max="100"
+                                    onChange={this.handleMarginChange}
+                                    value={this.props.logo.margin}
                                 />
                             </div>
                         </div>

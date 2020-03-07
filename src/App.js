@@ -29,6 +29,8 @@ export const LogoDefaults = {
   BORDER_STYLE: "solid",
   BORDER_RADIUS: 5,
   BORDER_WIDTH: 2,
+  PADDING: 5,
+  MARGIN: 10
 }
 
 // App IS THE ROOT REACT COMPONENT
@@ -152,7 +154,7 @@ class App extends Component {
    */
   buildChangeLogoTransaction = (oldLogo, logoKey, newText, 
     newTextColor, newFontSize, newBackgroundColor, newBorderColor,
-    newBorderRadius, newBorderThickness) => {
+    newBorderRadius, newBorderThickness, newPadding, newMargin) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
     // AN ENTIRELY NEW LOGO EACH TIME BUT IT SHOULD KEEP THE SAME KEY
     let postEditLogo = {
@@ -164,6 +166,8 @@ class App extends Component {
       borderColor: newBorderColor,
       borderRadius: newBorderRadius,
       borderThickness: newBorderThickness,
+      padding: newPadding,
+      margin: newMargin
     };
 
     // NOW BUILD THE TRANSACTION OBJECT
@@ -238,6 +242,8 @@ class App extends Component {
       borderStyle: LogoDefaults.BORDER_STYLE,
       borderRadius: LogoDefaults.BORDER_RADIUS,
       borderThickness: LogoDefaults.BORDER_WIDTH,
+      padding: LogoDefaults.PADDING,
+      margin: LogoDefaults.MARGIN
     }
     return newLogo;
   }
@@ -328,6 +334,8 @@ class App extends Component {
     text += "\tborderColor: " + logoToDisplay.borderColor + "\n";
     text += "\tborderRadius: " + logoToDisplay.borderRadius + "\n";
     text += "\tborderThickness: " + logoToDisplay.borderThickness + "\n";
+    text += "\tpadding: " + logoToDisplay.padding + "\n";
+    text += "\tmargin: " + logoToDisplay.margin + "\n";
     text += "}";
     return text;
   }
