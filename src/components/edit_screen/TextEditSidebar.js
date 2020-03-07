@@ -97,7 +97,7 @@ class TextEditSidebar extends Component {
                 </div>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Text</span>
+                        <span className="card-title">{this.props.logo.text}</span>
                         <div className="row">
                             <div className="col s12">Color:</div>
                             <div className="col s8">
