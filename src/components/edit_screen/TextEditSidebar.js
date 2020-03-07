@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import LogoInputModal from '../modals/LogoInputModal';
+import ErrorModal from '../modals/ErrorModal';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -69,8 +70,14 @@ class TextEditSidebar extends Component {
 
     handleEnterClick = (logoText) => {
         console.log("handleEnterClick " + logoText);
-        this.props.logo.text = logoText;
-        this.setState({ }, this.completeUserEditing)
+        if (logoText.length >= 1) {
+            this.props.logo.text = logoText;
+            this.setState({ }, this.completeUserEditing)
+        } 
+        else {
+            console.log("invalid name")
+        }
+
     }
 
     completeUserEditing = () => {

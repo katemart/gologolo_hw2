@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import {Modal, Button} from 'react-materialize'
 
-class ConfirmModal extends Component {
+class DeleteConfirmModal extends Component {
     constructor(props) {
         super(props);
 
-        console.log("Confirm modal constructor")
+        console.log("Delete modal constructor")
+    }
+
+    handleYesClick = (event) => {
+        console.log("yes click");
     }
 
     render() {
@@ -13,11 +17,12 @@ class ConfirmModal extends Component {
         <div>
             <Modal
                 actions={[
-                    <Button flat modal="close" node="button" waves="green">Close</Button>
+                    <Button flat modal="close" node="button" waves="green" onClick={this.handleYesClick}>Enter</Button>,
+                    <Button flat modal="close" node="button" waves="red" >No</Button>
                 ]}
                 bottomSheet={false}
                 fixedFooter={false}
-                header="Modal Header"
+                header="Are you sure you want to delete this logo?"
                 id="modal-0"
                 options={{
                     dismissible: false,
@@ -32,10 +37,10 @@ class ConfirmModal extends Component {
                     preventScrolling: true,
                     startingTop: '4%'
                 }}
-                trigger={<Button style={{cursor: "pointer"}} node="button">MODAL</Button>}
+                trigger={<Button flat node="button">&#128465;</Button>}
             >
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    This logo will not be retrievable
                 </p>
             </Modal>
         </div>
@@ -43,4 +48,4 @@ class ConfirmModal extends Component {
     }
 }
 
-export default ConfirmModal
+export default DeleteConfirmModal

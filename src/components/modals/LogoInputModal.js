@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {Modal, Button} from 'react-materialize'
+import React, { Component } from 'react';
+import {Modal, Button} from 'react-materialize';
 import TextInput from 'react-materialize/lib/TextInput';
 
 class LogoInputModal extends Component {
@@ -22,7 +22,6 @@ class LogoInputModal extends Component {
     }
 
     render() {
-        console.log("RENDER " + this.props.logo.text);
         return (
         <div>
             <Modal
