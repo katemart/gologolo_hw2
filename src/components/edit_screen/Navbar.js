@@ -1,5 +1,4 @@
 import React from 'react'
-//import { Modal } from 'materialize-css';
 
 class Navbar extends React.Component {
   constructor() {

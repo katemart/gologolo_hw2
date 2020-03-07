@@ -25,7 +25,6 @@ class HomeScreen extends Component {
     render() {
         // DISPLAY WHERE WE ARE
         console.log("\tHomeScreen render");
-
         return (
             <div className="container row">
                 <div className="col s4">

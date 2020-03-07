@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LogoInputModal from '../modals/LogoInputModal';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -16,8 +17,6 @@ class TextEditSidebar extends Component {
             padding: this.props.logo.padding,
             margin: this.props.logo.margin
         }
-        console.log(this.state);
-        console.log(this.props);
     }
 
     handleUndo = () => {
@@ -68,6 +67,12 @@ class TextEditSidebar extends Component {
         this.setState({ margin: event.target.value }, this.completeUserEditing);
     }
 
+    handleEnterClick = (logoText) => {
+        console.log("handleEnterClick " + logoText);
+        this.props.logo.text = logoText;
+        this.setState({ }, this.completeUserEditing)
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
@@ -77,7 +82,6 @@ class TextEditSidebar extends Component {
     }
 
     render() {
-        console.log(this.state)
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         let redoDisabled = !this.props.canRedo();
@@ -90,7 +94,7 @@ class TextEditSidebar extends Component {
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <button className="waves-effect waves-light btn-small">&#9998;</button>
+                        <LogoInputModal logo={this.props.logo} onEnter={this.handleEnterClick}/>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={redoClass} onClick={this.handleRedo}>Redo</button>
                     </div>
