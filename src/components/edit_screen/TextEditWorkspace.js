@@ -10,9 +10,8 @@ class TextEditWorkspace extends Component {
                 backgroundColor: this.props.logo.backgroundColor,
                 borderColor: this.props.logo.borderColor,
                 borderRadius: this.props.logo.borderRadius + "px",
-                borderThickness: this.props.logo.borderThickness + "px",
-                padding: this.props.logo.padding + "px",
-                margin: this.props.logo.margin + "px"
+                borderWidth: this.props.logo.borderThickness + "px",
+                borderStyle: "solid"
             }
         }
         return (

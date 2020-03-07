@@ -25,6 +25,10 @@ export const LogoDefaults = {
   TEXT_COLOR : "#FF0000",
   FONT_SIZE : 24,
   BACKGROUND_COLOR: "#cccc44",
+  BORDER_COLOR: "#444444",
+  BORDER_STYLE: "solid",
+  BORDER_RADIUS: 5,
+  BORDER_WIDTH: 2,
 }
 
 // App IS THE ROOT REACT COMPONENT
@@ -147,7 +151,8 @@ class App extends Component {
    * then add the built transaction to the stack and execute it.
    */
   buildChangeLogoTransaction = (oldLogo, logoKey, newText, 
-    newTextColor, newFontSize, newBackgroundColor) => {
+    newTextColor, newFontSize, newBackgroundColor, newBorderColor,
+    newBorderRadius, newBorderThickness) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
     // AN ENTIRELY NEW LOGO EACH TIME BUT IT SHOULD KEEP THE SAME KEY
     let postEditLogo = {
@@ -156,6 +161,9 @@ class App extends Component {
       textColor: newTextColor,
       fontSize: newFontSize,
       backgroundColor: newBackgroundColor,
+      borderColor: newBorderColor,
+      borderRadius: newBorderRadius,
+      borderThickness: newBorderThickness,
     };
 
     // NOW BUILD THE TRANSACTION OBJECT
@@ -225,7 +233,11 @@ class App extends Component {
       text: LogoDefaults.TEXT,
       textColor: LogoDefaults.TEXT_COLOR,
       fontSize: LogoDefaults.FONT_SIZE,
-      backgroundColor: LogoDefaults.BACKGROUND_COLOR
+      backgroundColor: LogoDefaults.BACKGROUND_COLOR,
+      borderColor: LogoDefaults.BORDER_COLOR,
+      borderStyle: LogoDefaults.BORDER_STYLE,
+      borderRadius: LogoDefaults.BORDER_RADIUS,
+      borderThickness: LogoDefaults.BORDER_WIDTH,
     }
     return newLogo;
   }
@@ -313,6 +325,9 @@ class App extends Component {
     text += "\ttextColor: " + logoToDisplay.textColor + "\n";
     text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
     text += "\tbackgroundColor: " + logoToDisplay.backgroundColor + "\n";
+    text += "\tborderColor: " + logoToDisplay.borderColor + "\n";
+    text += "\tborderRadius: " + logoToDisplay.borderRadius + "\n";
+    text += "\tborderThickness: " + logoToDisplay.borderThickness + "\n";
     text += "}";
     return text;
   }
