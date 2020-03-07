@@ -14,11 +14,10 @@ class TextEditWorkspace extends Component {
                 borderStyle: "solid",
                 padding: this.props.logo.padding + "px",
                 margin: this.props.logo.margin + "px",
-                overflow: 'auto'
             }
         }
         return (
-            <div className="col s8"
+            <div className="col"
                 style={ styles.container }>
                 {this.props.logo.text}
             </div>

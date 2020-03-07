@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 
 class TextEditSidebar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
-            textColor: "#FF0000",
-            fontSize: 24,
-            backgroundColor: "#cccc44",
-            borderColor: "#444444",
-            //borderStyle: "solid",
-            borderRadius: 5,
-            borderThickness: 2,
-            padding: 5,
-            margin: 10
+            textColor: this.props.logo.textColor,
+            fontSize: this.props.logo.fontSize,
+            backgroundColor: this.props.logo.backgroundColor,
+            borderColor: this.props.logo.borderColor,
+            borderRadius: this.props.logo.borderRadius,
+            borderThickness: this.props.borderThickness,
+            padding: this.props.padding,
+            margin: this.props.margin
         }
     }
 
@@ -25,32 +24,32 @@ class TextEditSidebar extends Component {
 
     handleTextColorChange = (event) => {
         console.log("handleTextColorChange to " + event.target.value);
-        this.setState({ textColor: event.target.value }, this.completeUserEditing);
+        this.setState({textColor: event.target.value }, this.completeUserEditing);
     }
 
     handleFontSizeChange = (event) => {
         console.log("handleFontSizeChange to " + event.target.value);
-        this.setState({ fontSize: event.target.value }, this.completeUserEditing);
+        this.setState({fontSize: event.target.value }, this.completeUserEditing);
     }
 
     handleBackgroundColorChange = (event) => {
         console.log("handleBackgroundColorChange to " + event.target.value);
-        this.setState({ backgroundColor: event.target.value }, this.completeUserEditing);
+        this.setState({backgroundColor: event.target.value }, this.completeUserEditing);
     }
 
     handleBorderColorChange = (event) => {
         console.log("handleBorderColorChange to " + event.target.value);
-        this.setState({ borderColor: event.target.value}, this.completeUserEditing);
+        this.setState({borderColor: event.target.value}, this.completeUserEditing);
     }
 
     handleBorderRadiusChange = (event) => {
         console.log("handleBorderRadiusChange to " + event.target.value);
-        this.setState({ borderRadius: event.target.value}, this.completeUserEditing);
+        this.setState({borderRadius: event.target.value}, this.completeUserEditing);
     }
 
     handleBorderThicknessChange = (event) => {
         console.log("handleBorderThicknessChange to " + event.target.value);
-        this.setState({ borderThickness: event.target.value}, this.completeUserEditing);
+        this.setState({borderThickness: event.target.value}, this.completeUserEditing);
     }
 
     handlePaddingChange = (event) => {
@@ -72,13 +71,12 @@ class TextEditSidebar extends Component {
     }
 
     render() {
+        console.log(this.state)
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         if (undoDisabled)
             undoClass += " disabled";
         return (
-            // TO DO: 
-            // EDIT TEXT BUTTON ACTION (waves-effect waves-light btn-small)
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
