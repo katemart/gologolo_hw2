@@ -66,10 +66,19 @@ class TextEditSidebar extends Component {
         console.log("handleEnterClick " + logoText);
         if (logoText.trim().length >= 1) {
             this.completeUserEditing(this.createObject("text", logoText));
-        } 
-        else {
+        } else {
             console.log("invalid name");
             this.mInit.open();
+        }
+    }
+
+    handleKeyUndoRedo = (event) => {
+        // key codes: z = 90 and y = 89
+        // command key = metaKey
+        if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {
+            this.props.redoCallback();
+        } else if (event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
+            this.props.undoCallback();
         }
     }
 
@@ -98,7 +107,7 @@ class TextEditSidebar extends Component {
         if (redoDisabled)
             redoClass += " disabled";
         return (
-            <div className="card-panel col s4">
+            <div className="card-panel col s4" onKeyDown={this.handleKeyUndoRedo}>
                 <ErrorModal/>
                 <div className="card blue-grey darken-1 center-align">
                     <div className="card-content white-text">
