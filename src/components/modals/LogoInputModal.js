@@ -26,8 +26,8 @@ class LogoInputModal extends Component {
         <div>
             <Modal
                 actions={[
-                    <Button className="teal lighten-1" flat modal="close" node="button" onClick={this.handleEnterClick}>Enter</Button>,
-                    <Button className="red lighten-2" flat modal="close" node="button" >Close</Button>
+                    <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" onClick={this.handleEnterClick}>Enter</Button>,
+                    <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" >Cancel</Button>
                 ]}
                 bottomSheet={false}
                 fixedFooter={false}
@@ -46,10 +46,10 @@ class LogoInputModal extends Component {
                     preventScrolling: true,
                     startingTop: '4%'
                 }}
-                trigger={<Button style={{cursor: "pointer"}} node="button">&#9998;</Button>}
+                trigger={<Button style={{cursor: "pointer"}} node="button">&#9998; EDIT LOGO TEXT</Button>}
             >
                 <TextInput
-                    label="Logo Text"
+                    placeholder="Logo Text"
                     onChange={this.handleLogoTextChange}
                     value={this.state.text}
                 />

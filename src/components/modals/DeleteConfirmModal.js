@@ -13,10 +13,10 @@ class DeleteConfirmModal extends Component {
         <div>
             <Modal
                 actions={[
-                    <Button className="teal lighten-1" flat modal="close" node="button" 
+                    <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" 
                         onClick={this.props.deleteLogo}>Yes
                     </Button>,
-                    <Button className="red lighten-2" flat modal="close" node="button" >No</Button>
+                    <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" >No</Button>
                 ]}
                 bottomSheet={false}
                 fixedFooter={false}
@@ -35,10 +35,10 @@ class DeleteConfirmModal extends Component {
                     preventScrolling: true,
                     startingTop: '4%'
                 }}
-                trigger={<Button flat node="button">&#128465;</Button>}
+                trigger={<Button style={{fontSize:30}}flat node="button">&#128465;</Button>}
             >
-                <p>
-                    This logo will not be retrievable
+                <p style={{fontSize:20}}>
+                    This action can not be undone
                 </p>
             </Modal>
         </div>

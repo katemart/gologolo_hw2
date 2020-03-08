@@ -33,7 +33,9 @@ class ErrorModal extends Component {
                         startingTop: '4%'
                     }}
                 >
-                    Text must be at least one character or longer
+                    <p style={{fontSize:20}}>
+                        Text must be at least one character or longer
+                    </p>
                 </Modal>
             </div>
         )

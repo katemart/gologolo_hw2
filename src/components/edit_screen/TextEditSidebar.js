@@ -73,7 +73,7 @@ class TextEditSidebar extends Component {
         }
     }
 
-    // this changes one property of logo at a time
+    // create function to change one property of logo at a time
     createObject(key, value) {
         const newObj = Object.assign({}, this.props.logo);      //deep copy of props.logo to newObj
         newObj[key] = value;                                    //object.key = value
@@ -100,19 +100,19 @@ class TextEditSidebar extends Component {
         return (
             <div className="card-panel col s4">
                 <ErrorModal/>
-                <div className="card blue-grey darken-1">
+                <div className="card blue-grey darken-1 center-align">
                     <div className="card-content white-text">
                         <LogoInputModal logo={this.props.logo} onEnter={this.handleEnterClick}/>
-                        <button className={undoClass} onClick={this.handleUndo}>Undo</button>
-                        <button className={redoClass} onClick={this.handleRedo}>Redo</button>
+                        <button className={undoClass} style={{margin:5}} onClick={this.handleUndo}>Undo</button>
+                        <button className={redoClass} style={{margin:5}} onClick={this.handleRedo}>Redo</button>
                     </div>
                 </div>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <span className="card-title">{this.props.logo.text}</span>
                         <div className="row">
-                            <div className="col s12">Color:</div>
-                            <div className="col s8">
+                            <div className="col s8">Color:</div>
+                            <div className="col s4">
                                 <input type="color"
                                     onChange={this.handleTextColorChange}
                                     value={this.props.logo.textColor}
@@ -132,8 +132,8 @@ class TextEditSidebar extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col s12">Background Color:</div>
-                            <div className="col s8">
+                            <div className="col s8">Background Color:</div>
+                            <div className="col s4">
                                 <input type="color"
                                     onChange={this.handleBackgroundColorChange}
                                     value={this.props.logo.backgroundColor}
@@ -141,8 +141,8 @@ class TextEditSidebar extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col s12">Border Color:</div>
-                            <div className="col s8">
+                            <div className="col s8">Border Color:</div>
+                            <div className="col s4">
                                 <input type="color"
                                     onChange={this.handleBorderColorChange}
                                     value={this.props.logo.borderColor}
