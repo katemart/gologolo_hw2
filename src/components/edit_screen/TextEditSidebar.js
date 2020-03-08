@@ -6,10 +6,10 @@ import Materialize from 'materialize-css';
 class TextEditSidebar extends Component {
     constructor(props) {
         super(props);
-
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
+            text: this.props.logo.text,
             textColor: this.props.logo.textColor,
             fontSize: this.props.logo.fontSize,
             backgroundColor: this.props.logo.backgroundColor,
@@ -82,8 +82,8 @@ class TextEditSidebar extends Component {
         }
         console.log("handleEnterClick " + logoText);
         if (logoText.trim().length >= 1) {
-            this.props.logo.text = logoText;
-            this.setState({}, this.completeUserEditing)
+            //this.state.logo.text = logoText;
+            this.setState({text: logoText}, this.completeUserEditing)
         } 
         else {
             console.log("invalid name");
@@ -94,7 +94,7 @@ class TextEditSidebar extends Component {
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text,
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.state.text,
             this.state.textColor, this.state.fontSize, this.state.backgroundColor, this.state.borderColor,
             this.state.borderRadius, this.state.borderThickness, this.state.padding, this.state.margin);
     }

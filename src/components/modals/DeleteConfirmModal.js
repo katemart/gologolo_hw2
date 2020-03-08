@@ -8,16 +8,14 @@ class DeleteConfirmModal extends Component {
         console.log("Delete modal constructor")
     }
 
-    handleYesClick = (event) => {
-        console.log("yes click");
-    }
-
     render() {
         return (
         <div>
             <Modal
                 actions={[
-                    <Button className="teal lighten-1" flat modal="close" node="button" onClick={this.handleYesClick}>Yes</Button>,
+                    <Button className="teal lighten-1" flat modal="close" node="button" 
+                        onClick={this.props.deleteLogo}>Yes
+                    </Button>,
                     <Button className="red lighten-2" flat modal="close" node="button" >No</Button>
                 ]}
                 bottomSheet={false}

@@ -40,7 +40,7 @@ class HomeScreen extends Component {
                     </div>
                     <div>
                         <button
-                            style={{ cursor: "pointer" }}
+                            style={{ cursor: "pointer", padding:10, margin:10}}
                             onClick={this.handleAddNewLogo}>
                             Create a New Logo
                         </button>

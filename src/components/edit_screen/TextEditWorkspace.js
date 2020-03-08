@@ -16,6 +16,7 @@ class TextEditWorkspace extends Component {
                 margin: this.props.logo.margin + "px"
             }
         }
+        console.log(styles)
         return (
             <div className="col"
                 style={ styles.container }>

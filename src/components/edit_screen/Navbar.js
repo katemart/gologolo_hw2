@@ -22,11 +22,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    //const {key} = this.props.logo;
-    // FOR DELETE: onClick={this.props.deleteLogoCallback.bind(this, key)}
-    // <ul id="nav-mobile" className="right hide-on-med-and-down">
-    //         <li style={ {cursor: "pointer"} }>&#128465;</li>
-    //       </ul>
     return (
       <nav>
         <div className="nav-wrapper">
@@ -36,7 +31,9 @@ class Navbar extends React.Component {
             goLogoLo
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer"} }><DeleteConfirmModal/></li>
+            <li style={ {cursor: "pointer"} }><DeleteConfirmModal 
+              deleteLogo={this.props.deleteLogoCallback.bind(this, this.props.logo.key)}/>
+            </li>
           </ul>
         </div>
       </nav>
