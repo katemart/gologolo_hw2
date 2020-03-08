@@ -4,23 +4,6 @@ import ErrorModal from '../modals/ErrorModal';
 import Materialize from 'materialize-css';
 
 class TextEditSidebar extends Component {
-    constructor(props) {
-        super(props);
-        // WE'LL MANAGE THE UI CONTROL
-        // VALUES HERE
-        this.state = {
-            text: this.props.logo.text,
-            textColor: this.props.logo.textColor,
-            fontSize: this.props.logo.fontSize,
-            backgroundColor: this.props.logo.backgroundColor,
-            borderColor: this.props.logo.borderColor,
-            borderRadius: this.props.logo.borderRadius,
-            borderThickness: this.props.logo.borderThickness,
-            padding: this.props.logo.padding,
-            margin: this.props.logo.margin
-        }
-    }
-
     componentDidMount = () => {
         console.log("TextEditSidebar did mount")
         let eModal = document.getElementById("errorModal");
@@ -37,42 +20,42 @@ class TextEditSidebar extends Component {
 
     handleTextColorChange = (event) => {
         console.log("handleTextColorChange to " + event.target.value);
-        this.setState({ textColor: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("textColor", event.target.value));
     }
 
     handleFontSizeChange = (event) => {
         console.log("handleFontSizeChange to " + event.target.value);
-        this.setState({ fontSize: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("fontSize", event.target.value));
     }
 
     handleBackgroundColorChange = (event) => {
         console.log("handleBackgroundColorChange to " + event.target.value);
-        this.setState({ backgroundColor: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("backgroundColor", event.target.value));
     }
 
     handleBorderColorChange = (event) => {
         console.log("handleBorderColorChange to " + event.target.value);
-        this.setState({ borderColor: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("borderColor", event.target.value));
     }
 
     handleBorderRadiusChange = (event) => {
         console.log("handleBorderRadiusChange to " + event.target.value);
-        this.setState({ borderRadius: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("borderRadius", event.target.value));
     }
 
     handleBorderThicknessChange = (event) => {
         console.log("handleBorderThicknessChange to " + event.target.value);
-        this.setState({ borderThickness: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("borderThickness", event.target.value));
     }
 
     handlePaddingChange = (event) => {
         console.log("handlePaddingChange to " + event.target.value);
-        this.setState({ padding: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("padding", event.target.value));
     }
 
     handleMarginChange = (event) => {
         console.log("handleMarginChange to " + event.target.value);
-        this.setState({ margin: event.target.value }, this.completeUserEditing);
+        this.completeUserEditing(this.createObject("margin", event.target.value));
     }
 
     handleEnterClick = (logoText) => {
@@ -82,8 +65,7 @@ class TextEditSidebar extends Component {
         }
         console.log("handleEnterClick " + logoText);
         if (logoText.trim().length >= 1) {
-            //this.state.logo.text = logoText;
-            this.setState({text: logoText}, this.completeUserEditing)
+            this.completeUserEditing(this.createObject("text", logoText));
         } 
         else {
             console.log("invalid name");
@@ -91,12 +73,19 @@ class TextEditSidebar extends Component {
         }
     }
 
-    completeUserEditing = () => {
+    // this changes one property of logo at a time
+    createObject(key, value) {
+        const newObj = Object.assign({}, this.props.logo);      //deep copy of props.logo to newObj
+        newObj[key] = value;                                    //object.key = value
+        return newObj;
+    }
+
+    // accesses each object property at a time
+    completeUserEditing = (obj) => {
         console.log("completeUserEditing");
-        console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.state.text,
-            this.state.textColor, this.state.fontSize, this.state.backgroundColor, this.state.borderColor,
-            this.state.borderRadius, this.state.borderThickness, this.state.padding, this.state.margin);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, obj.text,
+            obj.textColor, obj.fontSize, obj.backgroundColor, obj.borderColor,
+            obj.borderRadius, obj.borderThickness, obj.padding, obj.margin);
     }
 
     render() {
