@@ -13,12 +13,12 @@ class ErrorModal extends Component {
             <div>
                 <Modal
                     actions={[
-                        <Button flat modal="close" node="button" waves="green">Close</Button>
+                        <Button flat modal="close" node="button" className="teal lighten-1">Close</Button>
                     ]}
                     bottomSheet={false}
                     fixedFooter={false}
                     header="Invalid logo text"
-                    id="modal1"
+                    id="errorModal"
                     options={{
                         dismissible: true,
                         endingTop: '10%',

@@ -26,8 +26,8 @@ class LogoInputModal extends Component {
         <div>
             <Modal
                 actions={[
-                    <Button flat modal="close" node="button" waves="green" onClick={this.handleEnterClick}>Enter</Button>,
-                    <Button flat modal="close" node="button" waves="red">Close</Button>
+                    <Button className="teal lighten-1" flat modal="close" node="button" onClick={this.handleEnterClick}>Enter</Button>,
+                    <Button className="red lighten-2" flat modal="close" node="button" >Close</Button>
                 ]}
                 bottomSheet={false}
                 fixedFooter={false}

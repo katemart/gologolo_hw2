@@ -17,8 +17,8 @@ class DeleteConfirmModal extends Component {
         <div>
             <Modal
                 actions={[
-                    <Button flat modal="close" node="button" waves="green" onClick={this.handleYesClick}>Enter</Button>,
-                    <Button flat modal="close" node="button" waves="red" >No</Button>
+                    <Button className="teal lighten-1" flat modal="close" node="button" onClick={this.handleYesClick}>Yes</Button>,
+                    <Button className="red lighten-2" flat modal="close" node="button" >No</Button>
                 ]}
                 bottomSheet={false}
                 fixedFooter={false}

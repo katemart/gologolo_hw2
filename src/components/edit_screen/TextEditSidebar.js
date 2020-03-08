@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LogoInputModal from '../modals/LogoInputModal';
 import ErrorModal from '../modals/ErrorModal';
+import Materialize from 'materialize-css';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -18,6 +19,12 @@ class TextEditSidebar extends Component {
             padding: this.props.logo.padding,
             margin: this.props.logo.margin
         }
+    }
+
+    componentDidMount = () => {
+        console.log("TextEditSidebar did mount")
+        let eModal = document.getElementById("errorModal");
+        this.mInit = Materialize.Modal.init(eModal, {});
     }
 
     handleUndo = () => {
@@ -69,15 +76,19 @@ class TextEditSidebar extends Component {
     }
 
     handleEnterClick = (logoText) => {
+        logoText = logoText.trim();
+        for (let i = 0; i < logoText.length; i++) {
+            logoText = logoText.replace(" ", "\u00a0");
+        }
         console.log("handleEnterClick " + logoText);
-        if (logoText.length >= 1) {
+        if (logoText.trim().length >= 1) {
             this.props.logo.text = logoText;
-            this.setState({ }, this.completeUserEditing)
+            this.setState({}, this.completeUserEditing)
         } 
         else {
-            console.log("invalid name")
+            console.log("invalid name");
+            this.mInit.open();
         }
-
     }
 
     completeUserEditing = () => {
@@ -90,7 +101,7 @@ class TextEditSidebar extends Component {
 
     render() {
         let undoDisabled = !this.props.canUndo();
-        let undoClass = "waves-effect waves-light btn-small";
+        let undoClass = "teal lighten-1 btn-small";
         let redoDisabled = !this.props.canRedo();
         let redoClass = undoClass;
         if (undoDisabled)
@@ -99,6 +110,7 @@ class TextEditSidebar extends Component {
             redoClass += " disabled";
         return (
             <div className="card-panel col s4">
+                <ErrorModal/>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <LogoInputModal logo={this.props.logo} onEnter={this.handleEnterClick}/>
