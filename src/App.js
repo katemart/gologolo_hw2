@@ -21,9 +21,9 @@ export const TransactionType = {
 
 // DEFAULT VALUES FOR A BRAND NEW LOGO
 export const LogoDefaults = {
-  TEXT : "goLogoLo Logo",
-  TEXT_COLOR : "#720039",
-  FONT_SIZE : 24,
+  TEXT: "goLogoLo Logo",
+  TEXT_COLOR: "#720039",
+  FONT_SIZE: 24,
   BACKGROUND_COLOR: "#A3BAD9",
   BORDER_COLOR: "#F2A994",
   BORDER_STYLE: "solid",
@@ -96,8 +96,8 @@ class App extends Component {
   }
 
   // THERE ARE TWO NAVIGATION METHODS
-    // goToHomeScreen
-    // goToLogoScreen
+  // goToHomeScreen
+  // goToLogoScreen
 
   // AFTER THE STATE IS SET IT WILL FORCE A RENDER OF THIS 
   // FULL App COMPONENT USING THE HomeScreen
@@ -116,7 +116,7 @@ class App extends Component {
 
   // AFTER THE STATE IS SET IT WILL FORCE A RENDER OF THIS 
   // FULL App COMPONENT USING THE EditScreen  
-  goToEditScreen = (logo) => {    
+  goToEditScreen = (logo) => {
     // MAKE SURE logo IS AT THE TOP OF THE RECENT WORK LIST BY REMOVING
     // IT AND THEN PREPENDING
 
@@ -140,10 +140,10 @@ class App extends Component {
   }
 
   // FUNCTIONS FOR DEALING WITH THE TRANSACTION PROCESSING SYSTEM:
-    // buildChangeLogoTransaction
-    // undo
-    // resetTransactions
-    // canUndo
+  // buildChangeLogoTransaction
+  // undo
+  // resetTransactions
+  // canUndo
 
   /**
    * buildChangeLogoTransacation - This serves as a callback function for adding
@@ -152,7 +152,7 @@ class App extends Component {
    * to do the actual work of changing the logo. Note that this function will also
    * then add the built transaction to the stack and execute it.
    */
-  buildChangeLogoTransaction = (oldLogo, logoKey, newText, 
+  buildChangeLogoTransaction = (oldLogo, logoKey, newText,
     newTextColor, newFontSize, newBackgroundColor, newBorderColor,
     newBorderRadius, newBorderThickness, newPadding, newMargin) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
@@ -290,9 +290,9 @@ class App extends Component {
   }
 
   // THERE ARE 3 SERVICE FUNCTIONS CALLED AFTER A LOGO EDIT
-    // completeLogosChange
-    // afterLogosChangeComplete
-    // afterLogoDeleted
+  // completeLogosChange
+  // afterLogosChangeComplete
+  // afterLogoDeleted
 
   completeLogosChange = (nextLogos) => {
     // NOW GET THE LOGO TO EDIT
@@ -323,13 +323,16 @@ class App extends Component {
 
   afterLogoDeleted = () => {
     console.log("App afterLogoDeleted logos: " + this.logosToString(this.state.logos));
+    // DELETE LOGO FROM LOCAL STORAGE
+    let logosString = JSON.stringify(this.state.logos);
+    localStorage.setItem("recent_work", logosString);
     // FIRST GO HOME
     this.goToHomeScreen();
   }
 
   // THERE ARE TWO FUNCTIONS TO HELP GENERATE OUTPUT FOR DEBUGGING
-    // logoToString
-    // logosToString
+  // logoToString
+  // logosToString
 
   // CREATES AND RETURNS A TEXTUAL SUMMARY OF logoToDisplay
   logoToString = (logoToDisplay) => {
