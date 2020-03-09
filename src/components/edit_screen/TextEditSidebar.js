@@ -39,7 +39,7 @@ class TextEditSidebar extends Component {
     componentDidMount = () => {
         console.log("TextEditSidebar did mount")
         let eModal = document.getElementById("errorModal");
-        this.mInit = Materialize.Modal.init(eModal, {});
+        this.modalInit = Materialize.Modal.init(eModal, {});
     }
 
     handleUndo = () => {
@@ -96,7 +96,7 @@ class TextEditSidebar extends Component {
         } 
         else {
             console.log("invalid name");
-            this.mInit.open();
+            this.modalInit.open();
         }
     }
 
