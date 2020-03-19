@@ -22,17 +22,18 @@ class Navbar extends React.Component {
   }
 
   render() {
+    //"linear-gradient(to bottom, #b8b808, #26a69a)"
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper" style={{backgroundImage: "linear-gradient(to bottom, #b8b808, #26a69a)"}}>
           <div className='brand-logo'
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", padding: 10 }}
             onClick={this.handleGoHome}>
             goLogoLo
           </div>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer"} }><DeleteConfirmModal 
-              deleteLogo={this.props.deleteLogoCallback.bind(this, this.props.logo.key)}/>
+          <ul id="nav-mobile" className="right">
+            <li style={ {cursor: "pointer"} }>
+              <DeleteConfirmModal deleteLogo={this.props.deleteLogoCallback.bind(this, this.props.logo.key)}/>
             </li>
           </ul>
         </div>

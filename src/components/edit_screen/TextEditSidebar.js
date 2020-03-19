@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import LogoInputModal from '../modals/LogoInputModal';
-import ErrorModal from '../modals/ErrorModal';
-import Materialize from 'materialize-css';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -37,9 +35,7 @@ class TextEditSidebar extends Component {
     }
 
     componentDidMount = () => {
-        console.log("TextEditSidebar did mount")
-        let eModal = document.getElementById("errorModal");
-        this.modalInit = Materialize.Modal.init(eModal, {});
+        console.log("TextEditSidebar did mount");
     }
 
     handleUndo = () => {
@@ -90,14 +86,8 @@ class TextEditSidebar extends Component {
             logoText = logoText.replace(" ", "\u00a0");
         }
         console.log("handleEnterClick " + logoText);
-        if (logoText.trim().length >= 1) {
-            this.props.logo.text = logoText;
-            this.setState({}, this.completeUserEditing)
-        } 
-        else {
-            console.log("invalid name");
-            this.modalInit.open();
-        }
+        this.props.logo.text = logoText;
+        this.setState({}, this.completeUserEditing);
     }
 
     handleKeyUndoRedo = (event) => {
@@ -129,7 +119,6 @@ class TextEditSidebar extends Component {
             redoClass += " disabled";
         return (
             <div className="card-panel col s4" onKeyDown={this.handleKeyUndoRedo}>
-                <ErrorModal/>
                 <div className="card blue-grey darken-1 center-align">
                     <div className="card-content white-text">
                         <LogoInputModal logo={this.props.logo} onEnter={this.handleEnterClick}/>
@@ -139,7 +128,8 @@ class TextEditSidebar extends Component {
                 </div>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">{this.props.logo.text}</span>
+                        <span className="card-title" style={ {whiteSpace: "nowrap", 
+                        overflow: "hidden", textOverflow: "ellipsis"} }>{this.props.logo.text}</span>
                         <div className="row">
                             <div className="col s8">Color:</div>
                             <div className="col s4">

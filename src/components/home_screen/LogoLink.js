@@ -29,7 +29,7 @@ export class LogoLink extends Component {
         return (
             <div 
                 className='home_logo_link'                
-                style={ {cursor: "pointer"} }
+                style={ {cursor: "pointer", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"} }
                 onClick={this.handleGoToLogo}
             >
                 {this.props.logo.text}<br />

@@ -37,7 +37,7 @@ class DeleteConfirmModal extends Component {
                 }}
                 trigger={<Button style={{fontSize:30}}flat node="button">&#128465;</Button>}
             >
-                <p style={{fontSize:20}}>
+                <p style={{color: "#ef5350", fontSize:20}}>
                     This action can not be undone
                 </p>
             </Modal>

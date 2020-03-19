@@ -7,13 +7,14 @@ class LogoInputModal extends Component {
         super(props);
 
         this.state = {
-            text: this.props.logo.text
+            text: this.props.logo.text,
+            isValid: this.props.logo.text
         }
     }
 
     handleLogoTextChange = (event) => {
-        //console.log("handleLogoTextChange to " + event.target.value);
-        this.setState({text: event.target.value});
+        let isValid = event.target.value.trim();
+        this.setState({text: event.target.value, isValid});
     }
 
     handleEnterClick = (event) => {
@@ -22,11 +23,14 @@ class LogoInputModal extends Component {
     }
 
     render() {
+        let textValid = this.state.isValid;
+        let btnVisible = "teal lighten-1" + (textValid ? "" : " disabled"); 
+        let errorVisible = (textValid ? " hidden" : " visible");
         return (
         <div>
             <Modal
                 actions={[
-                    <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" onClick={this.handleEnterClick}>Enter</Button>,
+                    <Button className={btnVisible} style={{margin:2}} flat modal="close" node="button" onClick={this.handleEnterClick}>Enter</Button>,
                     <Button className="teal lighten-1" style={{margin:2}} flat modal="close" node="button" >Cancel</Button>
                 ]}
                 bottomSheet={false}
@@ -46,13 +50,15 @@ class LogoInputModal extends Component {
                     preventScrolling: true,
                     startingTop: '4%'
                 }}
-                trigger={<Button style={{cursor: "pointer"}} node="button">&#9998; EDIT LOGO TEXT</Button>}
-            >
+                trigger={
+                <Button style={{cursor: "pointer"}} node="button">&#9998; 
+                    <span className="hide-on-med-and-down"> EDIT LOGO TEXT</span>
+                </Button>}>
                 <TextInput
                     placeholder="Logo Text"
                     onChange={this.handleLogoTextChange}
-                    value={this.state.text}
-                />
+                    value={this.state.text}/>
+                <span style={{visibility: errorVisible, color: "#ef5350", fontSize: 20}}>Text must be at least one character or longer</span>
             </Modal>
         </div>
         )

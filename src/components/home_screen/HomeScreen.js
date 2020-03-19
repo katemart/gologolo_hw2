@@ -26,21 +26,21 @@ class HomeScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tHomeScreen render");
         return (
-            <div className="container row">
+            <div className="container row" style={{ paddingTop: 10}}>
                 <div className="col s4">
-                    <h3>Recent Work</h3>
+                    <h4>Recent Work</h4>
                     <LogoLinks
                         logos={this.props.logos}                
                         goToLogoCallback={this.props.goToLogoCallback}
                     />
                 </div>
-                <div className="col s8">
+                <div className="col s8 center-align" style={{ paddingTop: 15}}>
                     <div id="home_banner_container">
                         GoLogoLo
                     </div>
                     <div>
-                        <button
-                            style={{ cursor: "pointer", margin:10}}
+                        <button className="teal lighten-4"
+                            style={{ cursor: "pointer", margin: 10}}
                             onClick={this.handleAddNewLogo}>
                             Create a New Logo
                         </button>

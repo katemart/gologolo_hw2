@@ -13,14 +13,17 @@ class TextEditWorkspace extends Component {
                 borderWidth: this.props.logo.borderThickness + "px",
                 borderStyle: "solid",
                 padding: this.props.logo.padding + "px",
-                margin: this.props.logo.margin + "px"
+                margin: this.props.logo.margin + "px",
+                overflow: "auto"
             }
         }
         console.log(styles)
         return (
-            <div className="col"
-                style={ styles.container }>
-                {this.props.logo.text}
+            <div className="col" style={{maxWidth: "45vw"}}>
+                <div
+                    style={styles.container}>
+                    {this.props.logo.text}
+                </div>
             </div>
         )
     }
