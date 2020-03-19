@@ -13,17 +13,16 @@ class LogoInputModal extends Component {
     }
 
     handleLogoTextChange = (event) => {
-        let isValid = event.target.value.trim();
-        this.setState({text: event.target.value, isValid});
+        this.setState({text: event.target.value});
     }
 
     handleEnterClick = (event) => {
-        console.log("%c " + this.state.text, "color: yellow");
+        console.log(this.state.text);
         this.props.onEnter(this.state.text);
     }
 
     render() {
-        let textValid = this.state.isValid;
+        let textValid = this.state.text.trim();
         let btnVisible = "teal lighten-1" + (textValid ? "" : " disabled"); 
         let errorVisible = (textValid ? " hidden" : " visible");
         return (

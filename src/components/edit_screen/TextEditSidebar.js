@@ -7,6 +7,7 @@ class TextEditSidebar extends Component {
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
+            text: this.props.logo.text,
             textColor: this.props.logo.textColor,
             fontSize: this.props.logo.fontSize,
             backgroundColor: this.props.logo.backgroundColor,
@@ -22,6 +23,7 @@ class TextEditSidebar extends Component {
         if (this.props !== prevProps) {
             console.log("Updating State")
             this.setState({
+                text: this.props.logo.text,
                 textColor: this.props.logo.textColor,
                 fontSize: this.props.logo.fontSize,
                 backgroundColor: this.props.logo.backgroundColor,
@@ -90,20 +92,10 @@ class TextEditSidebar extends Component {
         this.setState({}, this.completeUserEditing);
     }
 
-    handleKeyUndoRedo = (event) => {
-        // key codes: z = 90 and y = 89
-        // command key = metaKey
-        if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {
-            this.props.redoCallback();
-        } else if (event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
-            this.props.undoCallback();
-        }
-    }
-
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text,
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.state.text,
             this.state.textColor, this.state.fontSize, this.state.backgroundColor, this.state.borderColor,
             this.state.borderRadius, this.state.borderThickness, this.state.padding, this.state.margin);
     }
@@ -118,7 +110,7 @@ class TextEditSidebar extends Component {
         if (redoDisabled)
             redoClass += " disabled";
         return (
-            <div className="card-panel col s4" onKeyDown={this.handleKeyUndoRedo}>
+            <div className="card-panel col s4">
                 <div className="card blue-grey darken-1 center-align">
                     <div className="card-content white-text">
                         <LogoInputModal logo={this.props.logo} onEnter={this.handleEnterClick}/>

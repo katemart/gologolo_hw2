@@ -24,11 +24,21 @@ export class EditScreen extends Component {
         console.log("\tEditScreen component will unmount");
     }
 
+    handleKeyUndoRedo = (event) => {
+        // key codes: z = 90 and y = 89
+        // command key = metaKey
+        if (event.keyCode === 89 && (event.ctrlKey || event.metaKey)) {
+            this.props.redoCallback();
+        } else if (event.keyCode === 90 && (event.ctrlKey || event.metaKey)) {
+            this.props.undoCallback();
+        }
+    }
+
     render() {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen render");
         return (
-            <div className="container">
+            <div className="container" onKeyDown={this.handleKeyUndoRedo} tabIndex="-1">
                 <Navbar goToHomeCallback={this.props.goToHomeCallback}
                         deleteLogoCallback={this.props.deleteLogoCallback}
                         logo={this.props.logo}
