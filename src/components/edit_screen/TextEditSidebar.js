@@ -88,8 +88,7 @@ class TextEditSidebar extends Component {
             logoText = logoText.replace(" ", "\u00a0");
         }
         console.log("handleEnterClick " + logoText);
-        this.props.logo.text = logoText;
-        this.setState({}, this.completeUserEditing);
+        this.setState({text: logoText}, this.completeUserEditing);
     }
 
     completeUserEditing = () => {
