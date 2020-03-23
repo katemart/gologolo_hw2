@@ -22,10 +22,10 @@ export const TransactionType = {
 // DEFAULT VALUES FOR A BRAND NEW LOGO
 export const LogoDefaults = {
   TEXT: "goLogoLo Logo",
-  TEXT_COLOR: "black",
+  TEXT_COLOR: "#000000",
   FONT_SIZE: 24,
-  BACKGROUND_COLOR: "#A3BAD9",
-  BORDER_COLOR: "#69F0AE",
+  BACKGROUND_COLOR: "#a3bad9",
+  BORDER_COLOR: "#69f0ae",
   BORDER_STYLE: "solid",
   BORDER_RADIUS: 5,
   BORDER_WIDTH: 5,
@@ -169,7 +169,7 @@ class App extends Component {
       padding: newPadding,
       margin: newMargin
     };
-
+    if (JSON.stringify(oldLogo) === JSON.stringify(postEditLogo)) return;
     // NOW BUILD THE TRANSACTION OBJECT
     let transaction = new ChangeLogo_Transaction(
       this.changeLogo, oldLogo, postEditLogo);
