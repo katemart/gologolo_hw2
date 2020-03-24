@@ -57,7 +57,7 @@ class LogoInputModal extends Component {
                     placeholder="Logo Text"
                     onChange={this.handleLogoTextChange}
                     value={this.state.text}/>
-                <span style={{visibility: errorVisible, color: "#ef5350", fontSize: 20}}>Text must be at least one character or longer</span>
+                <span style={{visibility: errorVisible, color: "#ef5350", fontSize: 20}}>Logo text must be at least one character or longer</span>
             </Modal>
         </div>
         )

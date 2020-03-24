@@ -38,7 +38,7 @@ export class EditScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen render");
         return (
-            <div className="container" onKeyDown={this.handleKeyUndoRedo} tabIndex="-1">
+            <div className="container" onKeyDown={this.handleKeyUndoRedo} tabIndex="0">
                 <Navbar goToHomeCallback={this.props.goToHomeCallback}
                         deleteLogoCallback={this.props.deleteLogoCallback}
                         logo={this.props.logo}

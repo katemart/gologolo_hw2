@@ -25,7 +25,7 @@ export const LogoDefaults = {
   TEXT_COLOR: "#000000",
   FONT_SIZE: 24,
   BACKGROUND_COLOR: "#a3bad9",
-  BORDER_COLOR: "#69f0ae",
+  BORDER_COLOR: "#edea2e",
   BORDER_STYLE: "solid",
   BORDER_RADIUS: 5,
   BORDER_WIDTH: 5,
